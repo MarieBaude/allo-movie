@@ -1,7 +1,7 @@
-import React from "react";
-
-function App() {
-  return <h1 class="text-red-500 text-3xl underline">Hello world!</h1>;
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline bg-violet-300 ">
+      Hello world!?
+    </h1>
+  )
 }
-
-export default App;
