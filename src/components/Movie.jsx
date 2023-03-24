@@ -18,7 +18,7 @@ function Movie() {
         </a>
 
         {/* Icon */}
-        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300 hover:bg-red-500 transition duration-500 ease-in-out">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -34,6 +34,7 @@ function Movie() {
             />
           </svg>       
         </div>
+        
       </div>
     </div>
   );
