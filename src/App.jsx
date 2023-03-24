@@ -1,7 +1,13 @@
-export default function App() {
+import NavBar from "./components/NavBar"
+
+function App() {
+
   return (
-    <h1 className="text-3xl font-bold underline bg-violet-300 ">
-      Hello world!?
-    </h1>
+    <div className="text-red-500">
+     coucou
+     <NavBar />
+    </div>
   )
 }
+
+export default App
