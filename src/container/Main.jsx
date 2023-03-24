@@ -4,7 +4,7 @@ import Movie from '../components/Movie';
 
 function Main() {
   return (
-    <main>
+    <main className="bg-gray-600">
       <Header />
 
     <container>
