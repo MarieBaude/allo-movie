@@ -7,7 +7,9 @@ function Main() {
     <main className="bg-gray-600">
       <Header />
 
-    <container>
+    <container className="flex justify-center">
+        <Movie />
+        <Movie />
         <Movie />
     </container>
 
