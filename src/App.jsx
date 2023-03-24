@@ -1,3 +1,5 @@
+import Main from "./container/Main"
+import Footer from "./container/Footer"
 import NavBar from "./components/NavBar"
 
 function App() {
@@ -5,6 +7,8 @@ function App() {
   return (
     <>
      <NavBar />
+     <Main />
+     <Footer />
     </>
   )
 }
