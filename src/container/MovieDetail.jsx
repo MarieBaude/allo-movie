@@ -3,17 +3,11 @@ import Layout from "../components/layout/layout";
 
 import { useParams } from "react-router-dom";
 
-import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
-
 export default function MovieDetail() {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const [genres, setGenres] = useState([]);
-  const [recommendations, setRecommendations] = useState([]);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
     const apiKey = "1dd5917804ffb261770f7039e814ff0d";
@@ -28,10 +22,10 @@ export default function MovieDetail() {
       .then((response) => response.json())
       .then((data) => setGenres(data.genres));
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=fr-FR&page=1`
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=fr-FR`
     )
       .then((response) => response.json())
-      .then((data) => setRecommendations(data.results));
+      .then((data) => setCast(data.cast));
   }, [movieId]);
 
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -49,7 +43,7 @@ export default function MovieDetail() {
                       {movie.title}
                     </h1>
 
-                    <div className="mt-3">
+                    <div className="my-3">
                       {movie.genres?.map((genre) => {
                         const genreName = genres.find(
                           (g) => g.id === genre.id
@@ -66,6 +60,7 @@ export default function MovieDetail() {
                         );
                       })}
                     </div>
+
                   </div>
 
                   {/* Icon */}
@@ -87,34 +82,34 @@ export default function MovieDetail() {
                   </div>
                 </div>
 
+                <p className="text-gray-300">Sortie : {movie.release_date}</p>
+                <p className="text-gray-300">Note : {movie.vote_average}</p>
+
                 <p className="mt-6 text-xl text-justify leading-8 text-gray-400">
                   {movie.overview}
                 </p>
 
                 <div className="mt-5">
                   <h3 className="text-2xl text-gray-100">Tête d'affiche</h3>
-                  <img
-                    class="mt-2 w-10 h-10 rounded"
-                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                    alt="Medium avatar"
-                  />
-                </div>
-
-                <div className="mt-10">
-                  <h3 className="text-2xl text-gray-100">Recommandations</h3>
-                  <div className="mt-6 grid gap-6 lg:grid-cols-3">
-                    {movie?.recommendations?.results?.map((result) => (
-                      <div key={result.id} className="flex flex-col">
-                        <a href={`/movie/${result.id}`}>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-6">
+                    {cast.map((actor) => (
+                      <div
+                        key={actor.id}
+                        className="flex flex-col items-center"
+                      >
+                        {actor.profile_path ? (
                           <img
-                            className="rounded-lg"
-                            src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-                            alt={result.title}
+                            className="mt-2 w-20 h-20 rounded object-cover"
+                            src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                            alt={actor.name}
                           />
-                        </a>
-                        <h3 className="mt-4 font-medium text-gray-100">
-                          {result.title}
-                        </h3>
+                        ) : (
+                          <img
+                            className="mt-2 w-20 h-20 rounded object-cover"
+                            src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                            alt="default actor image"
+                          />
+                        )}
                       </div>
                     ))}
                   </div>
