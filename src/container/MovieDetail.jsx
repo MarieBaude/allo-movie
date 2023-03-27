@@ -12,6 +12,7 @@ import {
 export default function MovieDetail() {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     const apiKey = "1dd5917804ffb261770f7039e814ff0d";
@@ -20,6 +21,12 @@ export default function MovieDetail() {
     )
       .then((response) => response.json())
       .then((data) => setMovie(data));
+
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=fr-FR`
+    )
+      .then((response) => response.json())
+      .then((data) => setGenres(data.genres));
   }, [movieId]);
 
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -34,18 +41,34 @@ export default function MovieDetail() {
                 <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">
                   {movie.title}
                 </h1>
-                <p className="mt-6 text-xl leading-8 text-gray-300">
+
+                <div className="mt-3">
+                  {movie.genres?.map((genre) => {
+                    const genreName = genres.find(
+                      (g) => g.id === genre.id
+                    )?.name;
+                    return (
+                      genreName && (
+                        <div
+                          key={genre.id}
+                          className="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border mr-2"
+                        >
+                          {genreName}
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+
+                <p className="mt-6 text-xl text-justify leading-8 text-gray-300">
                   {movie.overview}
                 </p>
               </div>
             </div>
             <div>
-            <img src={posterPath} alt={movie.title} />
+              <img src={posterPath} alt={movie.title} />
+            </div>
           </div>
-          </div>
-
-          
-
         </div>
       </div>
     </Layout>
