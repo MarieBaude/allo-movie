@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../components/Header";
 import MovieCard from "../components/MovieCard";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 function Main() {
   const [movies, setMovies] = useState([]);
@@ -16,20 +18,23 @@ function Main() {
   }, []);
 
   return (
-    <main className="bg-gray-600 flex flex-col align-center">
-      <Header />
+    <>
+      <NavBar />
+      <main className="bg-gray-600 flex flex-col align-center">
+        <Header />
 
-      <div className="flex flex-wrap justify-center">
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          />
-        ))}
-      </div>
-
-    </main>
+        <div className="flex flex-wrap justify-center">
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              title={movie.title}
+              poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            />
+          ))}
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }
 

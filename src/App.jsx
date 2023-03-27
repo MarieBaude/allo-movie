@@ -1,14 +1,16 @@
+import { Routes, Route } from 'react-router-dom';
+
 import Main from "./container/Main"
-import Footer from "./components/Footer"
-import NavBar from "./components/NavBar"
+import Favorites from './container/Favorites';
+// import MovieDetail from "./MovieDetail";
 
 function App() {
   return (
-    <>
-     <NavBar/>
-     <Main />
-     <Footer />
-    </>
+    <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/favorites" element={<Favorites/>} />
+        {/* <Route exact path="/movies/:movieId" component={MovieDetail} /> */}
+    </Routes>
   )
 }
 
