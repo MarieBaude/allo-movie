@@ -4,7 +4,7 @@ import Movie from '../components/Movie';
 
 function Main() {
   return (
-    <main className="bg-gray-600 min-h-screen">
+    <main className="bg-gray-600">
       <Header />
 
     <div className="flex justify-center">
