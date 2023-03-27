@@ -27,7 +27,6 @@ function Main() {
         <Movie />
         <Movie />
         <Movie />
-        <Movie />
     </div>
 
     </main>
