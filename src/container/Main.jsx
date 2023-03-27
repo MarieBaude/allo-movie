@@ -7,7 +7,24 @@ function Main() {
     <main className="bg-gray-600">
       <Header />
 
-    <div className="flex justify-center">
+    <div className="flex flex-wrap justify-center">
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
+        <Movie />
         <Movie />
         <Movie />
         <Movie />

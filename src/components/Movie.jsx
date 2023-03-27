@@ -2,7 +2,7 @@ import React from "react";
 
 function Movie() {
   return (
-    <div class="mx-6 mb-24 max-w-sm rounded-lg bg-gray-800">
+    <div class="mx-6 mb-24 max-w-xs rounded-lg bg-gray-800">
       <a href="#">
         <img
           class="rounded-t-lg"
