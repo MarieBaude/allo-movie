@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBar from '../components/NavBar';
 
 function Favorites() {
   return (
-    <div>Favorites</div>
+    <div>
+      <NavBar />
+    </div>
   )
 }
 

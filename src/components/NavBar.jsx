@@ -43,8 +43,26 @@ export default function NavBar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    <Link to="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Accueil</Link>
-                    <Link to="/favorites" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Favoris</Link>
+                    <Link
+                      to="/"
+                      className={`${
+                        window.location.pathname === "/"
+                          ? "bg-gray-900 text-white"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                      } rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Accueil
+                    </Link>
+                    <Link
+                      to="/favorites"
+                      className={`${
+                        window.location.pathname === "/favorites"
+                          ? "bg-gray-900 text-white"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                      } rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Favoris
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -65,7 +83,6 @@ export default function NavBar() {
               <Search />
             </div>
           </Disclosure.Panel> */}
-
         </>
       )}
     </Disclosure>
