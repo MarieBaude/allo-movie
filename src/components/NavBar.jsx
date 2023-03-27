@@ -64,10 +64,11 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
-
+              
               <div className="hidden sm:block">
-                <Search />
+              <Search />
               </div>
+
             </div>
           </div>
 
