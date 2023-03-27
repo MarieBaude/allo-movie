@@ -39,7 +39,7 @@ export default function MovieDetail() {
               <div className="lg:max-w-lg">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">
+                    <h1 className="mt-2 text-3xl max-w-[20ch] font-bold tracking-tight text-gray-100 sm:text-4xl">
                       {movie.title}
                     </h1>
 
@@ -64,7 +64,7 @@ export default function MovieDetail() {
                   </div>
 
                   {/* Icon */}
-                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300">
+                  <div class="flex items-center mx-1 justify-center h-12 w-12 rounded-full bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
