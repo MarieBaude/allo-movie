@@ -1,19 +1,19 @@
 import React from "react";
 
-function Movie() {
+function Movie(props) {
   return (
     <div class="mx-6 mb-24 max-w-xs rounded-lg bg-gray-800">
       <a href="#">
         <img
           class="rounded-t-lg"
-          src="https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_.jpg"
-          alt=""
+          src={props.poster}
+          alt={props.title}
         />
       </a>
       <div class="flex justify-between align-center p-5">
         <a href="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Title
+          <h5 class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {props.title}
           </h5>
         </a>
 
