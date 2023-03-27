@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import MovieCard from "../components/MovieCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 function Main() {
   const [movies, setMovies] = useState([]);
@@ -25,11 +26,13 @@ function Main() {
 
         <div className="flex flex-wrap justify-center">
           {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              title={movie.title}
-              poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            />
+            <Link to={`/movies/${movie.id}`}>
+              <MovieCard
+                key={movie.id}
+                title={movie.title}
+                poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              />
+            </Link>
           ))}
         </div>
       </main>

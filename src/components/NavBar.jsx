@@ -76,13 +76,32 @@ export default function NavBar() {
           {/****************************** 
                       MOBILE  
           *******************************/}
-          {/* <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              <Disclosure.Button href="/">Accueil</Disclosure.Button>
+          <Disclosure.Panel className="sm:hidden">
+            <div className="flex flex-col space-y-1 px-2 pt-2 pb-3">
+              <Link
+                to="/"
+                className={`${
+                  window.location.pathname === "/"
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                } rounded-md px-3 py-2 text-sm font-medium`}
+              >
+                Accueil
+              </Link>
+              <Link
+                to="/favorites"
+                className={`${
+                  window.location.pathname === "/favorites"
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                } rounded-md px-3 py-2 text-sm font-medium`}
+              >
+                Favoris
+              </Link>
 
               <Search />
             </div>
-          </Disclosure.Panel> */}
+          </Disclosure.Panel>
         </>
       )}
     </Disclosure>
