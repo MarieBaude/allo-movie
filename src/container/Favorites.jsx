@@ -1,11 +1,11 @@
 import React from 'react'
-import NavBar from '../components/NavBar';
+import Layout from '../components/layout/layout';
 
 function Favorites() {
   return (
-    <div>
-      <NavBar />
-    </div>
+    <Layout>
+      Fav
+    </Layout>
   )
 }
 
