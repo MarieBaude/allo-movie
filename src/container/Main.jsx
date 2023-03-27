@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../components/Header";
 import Movie from "../components/Movie";
-import Pagination from '../components/Pagination';
 
 function Main() {
   const [movies, setMovies] = useState([]);
@@ -29,8 +28,6 @@ function Main() {
           />
         ))}
       </div>
-
-      <Pagination />
 
     </main>
   );
