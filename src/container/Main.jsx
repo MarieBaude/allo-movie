@@ -5,6 +5,7 @@ import MovieCard from "../components/MovieCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import Layout from '../components/layout/layout';
 
 function Main() {
   const [movies, setMovies] = useState([]);
@@ -19,8 +20,7 @@ function Main() {
   }, []);
 
   return (
-    <>
-      <NavBar />
+    <Layout>
       <main className="bg-gray-600 flex flex-col align-center">
         <Header />
 
@@ -36,8 +36,7 @@ function Main() {
           ))}
         </div>
       </main>
-      <Footer />
-    </>
+    </Layout>
   );
 }
 
