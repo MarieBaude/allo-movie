@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Header from "../components/Header";
-import Movie from "../components/Movie";
+import MovieCard from "../components/MovieCard";
 
 function Main() {
   const [movies, setMovies] = useState([]);
@@ -21,7 +21,7 @@ function Main() {
 
       <div className="flex flex-wrap justify-center">
         {movies.map((movie) => (
-          <Movie
+          <MovieCard
             key={movie.id}
             title={movie.title}
             poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

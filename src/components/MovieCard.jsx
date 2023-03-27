@@ -1,6 +1,6 @@
 import React from "react";
 
-function Movie(props) {
+function MovieCard(props) {
   return (
     <div class="mx-6 mb-24 max-w-xs rounded-lg bg-gray-800">
       <a href="#">
@@ -40,4 +40,4 @@ function Movie(props) {
   );
 }
 
-export default Movie;
+export default MovieCard;
