@@ -13,6 +13,7 @@ export default function MovieDetail() {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const [genres, setGenres] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
     const apiKey = "1dd5917804ffb261770f7039e814ff0d";
@@ -21,12 +22,16 @@ export default function MovieDetail() {
     )
       .then((response) => response.json())
       .then((data) => setMovie(data));
-
     fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=fr-FR`
     )
       .then((response) => response.json())
       .then((data) => setGenres(data.genres));
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=fr-FR&page=1`
+    )
+      .then((response) => response.json())
+      .then((data) => setRecommendations(data.results));
   }, [movieId]);
 
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
@@ -36,38 +41,90 @@ export default function MovieDetail() {
       <div className="relative isolate overflow-hidden bg-gray-600 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-            <div className="lg:pr-4">
+            <section className="lg:pr-4">
               <div className="lg:max-w-lg">
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">
-                  {movie.title}
-                </h1>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">
+                      {movie.title}
+                    </h1>
 
-                <div className="mt-3">
-                  {movie.genres?.map((genre) => {
-                    const genreName = genres.find(
-                      (g) => g.id === genre.id
-                    )?.name;
-                    return (
-                      genreName && (
-                        <div
-                          key={genre.id}
-                          className="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border mr-2"
-                        >
-                          {genreName}
-                        </div>
-                      )
-                    );
-                  })}
+                    <div className="mt-3">
+                      {movie.genres?.map((genre) => {
+                        const genreName = genres.find(
+                          (g) => g.id === genre.id
+                        )?.name;
+                        return (
+                          genreName && (
+                            <div
+                              key={genre.id}
+                              className="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded-full bg-white text-gray-700 border mr-2"
+                            >
+                              {genreName}
+                            </div>
+                          )
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Icon */}
+                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      class="w-6 h-6 heart-icon"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                      />
+                    </svg>
+                  </div>
                 </div>
 
-                <p className="mt-6 text-xl text-justify leading-8 text-gray-300">
+                <p className="mt-6 text-xl text-justify leading-8 text-gray-400">
                   {movie.overview}
                 </p>
+
+                <div className="mt-5">
+                  <h3 className="text-2xl text-gray-100">Tête d'affiche</h3>
+                  <img
+                    class="mt-2 w-10 h-10 rounded"
+                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    alt="Medium avatar"
+                  />
+                </div>
+
+                <div className="mt-10">
+                  <h3 className="text-2xl text-gray-100">Recommandations</h3>
+                  <div className="mt-6 grid gap-6 lg:grid-cols-3">
+                    {movie?.recommendations?.results?.map((result) => (
+                      <div key={result.id} className="flex flex-col">
+                        <a href={`/movie/${result.id}`}>
+                          <img
+                            className="rounded-lg"
+                            src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                            alt={result.title}
+                          />
+                        </a>
+                        <h3 className="mt-4 font-medium text-gray-100">
+                          {result.title}
+                        </h3>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
+            </section>
+
+            <section>
               <img src={posterPath} alt={movie.title} />
-            </div>
+            </section>
           </div>
         </div>
       </div>
