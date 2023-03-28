@@ -1,14 +1,11 @@
 import React from "react";
+import BtnFav from './BtnFav';
 
 function MovieCard(props) {
   return (
     <div class="mx-6 mb-24 max-w-xs rounded-lg bg-gray-800">
       <a href="#">
-        <img
-          class="rounded-t-lg"
-          src={props.poster}
-          alt={props.title}
-        />
+        <img class="rounded-t-lg" src={props.poster} alt={props.title} />
       </a>
       <div class="flex justify-between align-center p-5">
         <a href="#">
@@ -18,23 +15,12 @@ function MovieCard(props) {
         </a>
 
         {/* Icon */}
-        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            class="w-6 h-6 heart-icon"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>       
+        <div
+          class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300"
+          onClick={() => props.handleFavouritesClick(movie)}
+        >
+          <BtnFav />
         </div>
-        
       </div>
     </div>
   );
