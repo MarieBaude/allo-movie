@@ -9,7 +9,7 @@ function BtnFav() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        class="w-6 h-6 heart-icon"
+        className="w-6 h-6 heart-icon"
       >
         <path
           strokeLinecap="round"

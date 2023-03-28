@@ -25,7 +25,7 @@ function Main() {
 
         <div className="flex flex-wrap justify-center">
           {movies.map((movie) => (
-            <Link to={`/movies/${movie.id}`}>
+            <Link to={`/movies/${movie.id}`} key={movie.id}>
               <MovieCard
                 key={movie.id}
                 title={movie.title}

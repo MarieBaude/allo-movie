@@ -65,7 +65,7 @@ export default function MovieDetail() {
 
                   {/* Icon */}
                   <div
-                    class="flex items-center mx-1 justify-center h-12 w-12 rounded-full bg-gray-300 hover:bg-red-400"
+                    className="flex items-center mx-1 justify-center h-12 w-12 rounded-full bg-gray-300 hover:bg-red-400"
                   >
                    <BtnFav />
                   </div>

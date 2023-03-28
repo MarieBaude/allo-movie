@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import Search from "./SearchInput";
+import SearchInput from "./SearchInput";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -68,7 +68,7 @@ export default function NavBar() {
               </div>
 
               <div className="hidden sm:block">
-                <Search />
+                <SearchInput />
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function NavBar() {
                 Favoris
               </Link>
 
-              <Search />
+              <SearchInput />
             </div>
           </Disclosure.Panel>
         </>
