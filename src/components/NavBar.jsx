@@ -10,6 +10,11 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+  const handleSearch = (results) => {
+    console.log(results);
+    // faire quelque chose avec les résultats de la recherche
+  };
+  
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -68,7 +73,7 @@ export default function NavBar() {
               </div>
 
               <div className="hidden sm:block">
-                <SearchInput />
+                <SearchInput onSearch={handleSearch}/>
               </div>
             </div>
           </div>
@@ -99,7 +104,7 @@ export default function NavBar() {
                 Favoris
               </Link>
 
-              <SearchInput />
+              <SearchInput onSearch={handleSearch}/>
             </div>
           </Disclosure.Panel>
         </>

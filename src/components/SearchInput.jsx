@@ -55,7 +55,6 @@ function SearchInput({ onSearch }) {
           onChange={handleSearchInputChange}
           required
         />
-        <button type="submit">Rechercher</button>
       </div>
     </form>
   );

@@ -5,7 +5,7 @@ import Main from "./container/Main";
 import Favorites from "./container/Favorites";
 import MovieDetail from "./container/MovieDetail";
 import SearchResult from './container/SearchResult';
-import Search from "./components/SearchInput";
+import SearchInput from "./components/SearchInput";
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/movies/:movieId" element={<MovieDetail />} />
       <Route path="/search" element={<SearchResult results={searchResults} />} />
-      <Route path="/search-results" element={<Search onSearch={handleSearchResults} />} />
+      <Route path="/search-results" element={<SearchInput onSearch={handleSearchResults} />} />
     </Routes>
   );
 }
