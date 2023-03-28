@@ -8,7 +8,6 @@ import BtnFav from '../components/BtnFav';
 
 function Main() {
   const [movies, setMovies] = useState([]);
-  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     const apiKey = "1dd5917804ffb261770f7039e814ff0d";
@@ -18,12 +17,6 @@ function Main() {
       .then((response) => response.json())
       .then((data) => setMovies(data.results));
   }, []);
-
-  const addFavouriteMovie = (movie) => {
-		const newFavouriteList = [...favourites, movie];
-		setFavourites(newFavouriteList);
-		saveToLocalStorage(newFavouriteList);
-	};
 
   return (
     <Layout>
@@ -37,11 +30,8 @@ function Main() {
                 key={movie.id}
                 title={movie.title}
                 poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                handleFavouritesClick={addFavouriteMovie}
-					      favouriteComponent={BtnFav}
               />
             </Link>
-            
           ))}
         </div>
 
