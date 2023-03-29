@@ -12,17 +12,12 @@ export const SearchContext = createContext();
 function App() {
   const [searchResults, setSearchResults] = useState([]);
 
-  const toto = (maRecherche) => {
-    console.log('toto:', maRecherche)
-    setSearchResults(maRecherche)
-  }
-
   const handleSearchResults = (results) => {
     setSearchResults(results);
   };
 
   return (
-    <SearchContext.Provider value={{searchResults, toto}}>
+    <SearchContext.Provider value={{searchResults, setSearchResults}}>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/favorites" element={<Favorites />} />

@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from '../App';
 
 function SearchInput({ onSearch }) {
-  const searchResult = useContext(SearchContext);
+  const searchContext = useContext(SearchContext);
 
   const [searchTerm, setSearchTerm] = useState("");
-  // const [searchResults, setResults] = useState([]);
 
   const navigate = useNavigate();
 
@@ -22,8 +21,7 @@ function SearchInput({ onSearch }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        searchResult.toto(data.results);
-        // onSearch(data.results);
+        searchContext.setSearchResults(data.results);
         navigate("/search");
       });
   };

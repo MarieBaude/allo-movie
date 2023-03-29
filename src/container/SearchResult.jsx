@@ -5,15 +5,15 @@ import { SearchContext } from '../App';
 
 function SearchResult() {
   const navigate = useNavigate();
-  const searchResult = useContext(SearchContext);
+  const searchContext = useContext(SearchContext);
 
   return (
     <Layout>
-      {searchResult.searchResults.length === 0 ? (
+      {searchContext.searchResults.length === 0 ? (
         <p>Aucun résultat trouvé.</p>
       ) : (
         <ul>
-          {searchResult.searchResults.map((result) => (
+          {searchContext.searchResults.map((result) => (
             <li key={result.id}>{result.title}</li>
           ))}
         </ul>
