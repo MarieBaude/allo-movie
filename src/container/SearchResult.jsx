@@ -7,7 +7,6 @@ function SearchResult({ results }) {
 
   return (
     <Layout>
-      <h1>Résultats : </h1>
       {results.length === 0 ? (
         <p>Aucun résultat trouvé.</p>
       ) : (

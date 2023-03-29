@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -10,10 +12,14 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+
   const handleSearch = (results) => {
+    setSearchResults(results);
     console.log(results);
-    // faire quelque chose avec les résultats de la recherche
   };
+  
   
   return (
     <Disclosure as="nav" className="bg-gray-800">
