@@ -1,9 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Layout from "../components/layout/layout";
 
-function SearchResult() {
+function SearchResult({ results }) {
+  const navigate = useNavigate();
+
   return (
-    <div>SearchResult</div>
-  )
+    <Layout>
+      {results.length === 0 ? (
+        <p>Aucun résultat trouvé.</p>
+      ) : (
+        <ul>
+          {results.map((result) => (
+            <li key={result.id}>{result.title}</li>
+          ))}
+        </ul>
+      )}
+    </Layout>
+  );
 }
 
-export default SearchResult
+export default SearchResult;

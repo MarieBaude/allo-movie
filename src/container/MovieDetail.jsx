@@ -9,7 +9,6 @@ export default function MovieDetail() {
   const { movieId } = useParams();
   const [genres, setGenres] = useState([]);
   const [cast, setCast] = useState([]);
-  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     const apiKey = "1dd5917804ffb261770f7039e814ff0d";
@@ -29,12 +28,6 @@ export default function MovieDetail() {
       .then((response) => response.json())
       .then((data) => setCast(data.cast));
   }, [movieId]);
-
-  const addFavouriteMovie = (movie) => {
-		const newFavouriteList = [...favourites, movie];
-		setFavourites(newFavouriteList);
-		saveToLocalStorage(newFavouriteList);
-	};
 
   const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
@@ -72,9 +65,7 @@ export default function MovieDetail() {
 
                   {/* Icon */}
                   <div
-                    class="flex items-center mx-1 justify-center h-12 w-12 rounded-full bg-gray-300 hover:bg-red-400"
-                    handleFavouritesClick={addFavouriteMovie}
-                    favouriteComponent={BtnFav}
+                    className="flex items-center mx-1 justify-center h-12 w-12 rounded-full bg-gray-300 hover:bg-red-400"
                   >
                    <BtnFav />
                   </div>

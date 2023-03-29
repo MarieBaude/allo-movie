@@ -1,15 +1,26 @@
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import Search from "./SearchInput";
+import SearchInput from "./SearchInput";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function NavBar() {
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+
+  const handleSearch = (results) => {
+    setSearchResults(results);
+    console.log(results);
+  };
+  
+  
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -68,7 +79,7 @@ export default function NavBar() {
               </div>
 
               <div className="hidden sm:block">
-                <Search />
+                <SearchInput onSearch={handleSearch}/>
               </div>
             </div>
           </div>
@@ -99,7 +110,7 @@ export default function NavBar() {
                 Favoris
               </Link>
 
-              <Search />
+              <SearchInput onSearch={handleSearch}/>
             </div>
           </Disclosure.Panel>
         </>
