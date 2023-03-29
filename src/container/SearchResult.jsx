@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import { SearchContext } from '../App';
+import { Link } from "react-router-dom";
+import MovieCard from '../components/MovieCard';
 
 function SearchResult() {
   const navigate = useNavigate();
@@ -12,14 +14,21 @@ function SearchResult() {
       {searchContext.searchResults.length === 0 ? (
         <p>Aucun résultat trouvé.</p>
       ) : (
-        <ul>
+        <section className="">
           {searchContext.searchResults.map((result) => (
-            <li key={result.id}>{result.title}</li>
+            <Link to={`/movies/${result.id}`} key={result.id}>
+              <MovieCard
+                key={result.id}
+                title={result.title}
+                poster={result.poster_path ? `https://image.tmdb.org/t/p/w500${result.poster_path}` : 'https://images.assetsdelivery.com/compings_v2/pavelstasevich/pavelstasevich1811/pavelstasevich181101027.jpg'}
+              />
+            </Link>
           ))}
-        </ul>
+        </section>
       )}
     </Layout>
   );
 }
 
 export default SearchResult;
+
