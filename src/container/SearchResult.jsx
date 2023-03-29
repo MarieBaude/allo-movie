@@ -14,7 +14,7 @@ function SearchResult() {
       {searchContext.searchResults.length === 0 ? (
         <p>Aucun résultat trouvé.</p>
       ) : (
-        <section className="">
+        <section className="flex flex-wrap justify-center mt-5">
           {searchContext.searchResults.map((result) => (
             <Link to={`/movies/${result.id}`} key={result.id}>
               <MovieCard
