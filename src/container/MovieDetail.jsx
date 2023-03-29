@@ -29,7 +29,7 @@ export default function MovieDetail() {
       .then((data) => setCast(data.cast));
   }, [movieId]);
 
-  const posterPath = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  const posterPath = `https://image.tmdb.org/t/p/w500/${movie? movie.poster_path : ''}`;
 
   return (
     <Layout>
@@ -89,7 +89,7 @@ export default function MovieDetail() {
                         {actor.profile_path ? (
                           <img
                             className="mt-2 w-20 h-20 rounded object-cover"
-                            src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                            src={`https://image.tmdb.org/t/p/w500/${actor ? actor.profile_path : ''}`}
                             alt={actor.name}
                           />
                         ) : (

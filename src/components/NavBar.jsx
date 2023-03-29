@@ -14,12 +14,6 @@ function classNames(...classes) {
 export default function NavBar() {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
-
-  const handleSearch = (results) => {
-    setSearchResults(results);
-    console.log(results);
-  };
-  
   
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -79,7 +73,7 @@ export default function NavBar() {
               </div>
 
               <div className="hidden sm:block">
-                <SearchInput onSearch={handleSearch}/>
+                <SearchInput />
               </div>
             </div>
           </div>
@@ -110,7 +104,7 @@ export default function NavBar() {
                 Favoris
               </Link>
 
-              <SearchInput onSearch={handleSearch}/>
+              <SearchInput />
             </div>
           </Disclosure.Panel>
         </>
