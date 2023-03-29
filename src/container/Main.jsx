@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 import Layout from '../components/layout/layout';
-import BtnFav from '../components/BtnFav';
 
 function Main() {
   const [movies, setMovies] = useState([]);

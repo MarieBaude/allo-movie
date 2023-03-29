@@ -15,7 +15,6 @@ function MovieCard(props) {
         {/* Icon */}
         <div
           className="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300"
-          onClick={() => props.handleFavouritesClick(movie)}
         >
           <BtnFav />
         </div>
