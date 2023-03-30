@@ -13,7 +13,7 @@ function MovieCard(props) {
 
         {/* Icon */}
         <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300">
-          <BtnFav />
+          <BtnFav movie={props} />
         </div>
       </div>
     </div>
