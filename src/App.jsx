@@ -1,10 +1,10 @@
 import React, { useState, useEffect, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Main from "./container/Main";
-import Favorites from "./container/Favorites";
-import MovieDetail from "./container/MovieDetail";
-import SearchResult from "./container/SearchResult";
+import Main from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import MovieDetail from "./pages/MovieDetail";
+import SearchResult from "./pages/SearchResult";
 import SearchInput from "./components/SearchInput";
 
 export const SearchContext = createContext();
